@@ -10,15 +10,10 @@
  * governing permissions and limitations under the License.
  */
 
-import { fetchSchedule, fetchFromAem } from './handlers/aem.js';
+import { fetchFromAem } from './handlers/aem.js';
 import fetchDaSc from './handlers/dasc.js';
 
 const ROUTES = [
-  // Handle schedule manifests
-  {
-    match: (path) => path.includes('/schedules/') && path.endsWith('json'),
-    handler: fetchSchedule,
-  },
   // Handle structured content
   {
     match: (path) => path.includes('/dasc/') && path.endsWith('json'),

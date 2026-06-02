@@ -11,12 +11,10 @@ async function loadSidekick() {
 
 (function loadLazy() {
   import('./utils/lazyhash.js');
-  import('./utils/favicon.js');
   import('./utils/footer.js').then(({ default: footer }) => footer());
 
   // Author facing tools
   if (ENV !== 'prod') {
-    import('../tools/scheduler/scheduler.js');
     loadSidekick();
   }
 }());

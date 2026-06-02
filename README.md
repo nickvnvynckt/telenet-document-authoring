@@ -1,5 +1,20 @@
-# Author Kit
-For projects that want a few more batteries. Built by the team who brought you da.live and adobe.com.
+# Author Kit (whitelabel)
+A stripped-down, unbranded AEM Edge Delivery Services base. All branding —
+fonts, color palette, design tokens, typography, buttons, grid and spacing —
+has been removed so the site can be re-themed from scratch. Built on the kit by
+the team who brought you da.live and adobe.com.
+
+## Blocks
+Only the framework-essential blocks are included:
+
+* `header`, `footer` — site chrome
+* `columns` — multi-column layouts
+* `fragment` — reusable content fragments / auto-block (`/fragments/`)
+* `section-metadata` — section layout & options
+
+Block CSS files are intentionally empty placeholders — add project styling there.
+`styles/styles.css` keeps only the structural rules required for sections/blocks
+to decorate without a flash of unstyled content.
 
 ## Getting started
 
@@ -29,22 +44,14 @@ For projects that want a few more batteries. Built by the team who brought you d
 * Do not translate support (#_dnt)
 
 ### Flexible section authoring
-* Optional containers to constrain content
-* Grids: 1-6
-* Columns: 1-12
+* Section/block decoration machinery (grids, columns, containers) — styling is
+  unstyled by default; add layout CSS in the block files
 * Color scheme: light, dark
-* Gap: xs, s, m, l, xl, xxl
-* Spacing: xs, s, m, l, xl, xxl
-* Background: token / image / color / gradient
 
 ### Base content
-* Universal buttons w/ extensive styles
 * Images w/ retina breakpoint
-* Color scheme support: light, dark
-* Modern favicon support
 * New window support
 * Deep link support
-* Modal support
 
 ### Header and footer content
 * Brand - First link in header
@@ -53,13 +60,9 @@ For projects that want a few more batteries. Built by the team who brought you d
 * Menu & mega menu support
 * Disable header/footer via meta props
 
-### Scheduled content
-* Schedule content using spreadsheets
-
 ### Sidekick & pre-production
 * Quick Edit
 * Extensible plumbing for plugins
-* Schedule simulator
 * Convert production links to relative
 
 ### Performance
@@ -93,26 +96,7 @@ An auto block is a block generated from a pre-defined piece of content. Often ti
 Default content is content that lives outside a block.
 
 ## Design System
-
-### Spacing & Gap
-XS, S, M, L, XL, XXL
-
-### Emphasis
-quiet, default, strong, negative
-
-### Buttons
-accent, primary, secondary, negative
-(w/ outline variations)
-
-### Columns
-1 - 12
-
-### Grid
-1 - 6
-
-### Color tokens
-blue, gray, green, magenta, organge, red, purple, yellow
-(w/ 100-900 variations)
-
-### Color schemes
-light, dark
+This is a whitelabel base — the design system (spacing/gap tokens, emphasis and
+button styles, column/grid layout, color palette) has been intentionally
+removed. Re-introduce design tokens in `styles/styles.css` and per-block styling
+in the block CSS files. Only `light` / `dark` color schemes remain wired up.
