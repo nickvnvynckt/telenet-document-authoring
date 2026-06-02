@@ -1,0 +1,20 @@
+.columns > div {
+  display: grid;
+  gap: 24px;
+}
+
+/* center each column's content */
+.columns > div > div {
+  text-align: center;
+}
+
+.columns img {
+  width: 100%;
+}
+
+@media (width >= 600px) {
+  .columns-2-cols > div {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+}
