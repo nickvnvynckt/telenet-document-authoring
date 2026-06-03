@@ -111,6 +111,10 @@ a.button {
 }
 
 /* sections */
+main > .section {
+  padding-block: clamp(28px, 5vw, 56px);
+}
+
 main > .section > div {
   max-width: var(--tn-content-width);
   margin-inline: auto;
@@ -121,6 +125,74 @@ main > .section > div {
 main > .section > div:has(> .banner) {
   max-width: none;
   padding-inline: 0;
+}
+
+/* default (non-block) content is centered, like the Telenet section intros */
+.default-content-wrapper {
+  text-align: center;
+}
+
+.default-content-wrapper > * {
+  margin-inline: auto;
+}
+
+.default-content-wrapper p {
+  max-width: 720px;
+}
+
+/* eyebrow / kicker: a short paragraph sitting directly above a heading */
+.default-content-wrapper p:has(+ h1, + h2, + h3, + h4) {
+  margin-bottom: 8px;
+  font-family: var(--tn-font-heading);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* a "see all" link standing alone in default content renders as a centered
+   outline chevron button */
+.default-content-wrapper p:has(> a:only-child) {
+  text-align: center;
+}
+
+.default-content-wrapper p:has(> a:only-child) > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 24px 12px 12px;
+  border: 2px solid var(--tn-black);
+  border-radius: 999px;
+  background-color: transparent;
+  color: var(--tn-black);
+  font-family: var(--tn-font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.default-content-wrapper p:has(> a:only-child) > a::before {
+  content: "›";
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background-color: var(--tn-yellow);
+  color: var(--tn-black);
+  font-size: 22px;
+  font-weight: 900;
+}
+
+/* section styles, applied via a "Section Metadata" block (e.g. Style: highlight).
+   Other Section Metadata keys are exposed as data-* attributes on the section. */
+main > .section.highlight {
+  background-color: var(--tn-shaded);
+}
+
+main > .section.centered {
+  text-align: center;
 }
 
 /* prevent flash of unstyled content until decoration completes */
