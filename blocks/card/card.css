@@ -5,6 +5,9 @@
   border-radius: var(--tn-radius);
   background-color: var(--tn-white);
   box-shadow: var(--tn-shadow);
+
+  /* keep card content left-aligned even inside a centered section */
+  text-align: left;
 }
 
 .card h3 {

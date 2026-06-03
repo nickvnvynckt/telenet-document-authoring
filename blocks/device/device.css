@@ -3,15 +3,17 @@
   max-width: 280px;
   margin: 16px auto;
   padding: 20px;
-  border: 1px solid rgb(0 0 0 / 10%);
   border-radius: var(--tn-radius);
   background-color: var(--tn-white);
   text-align: center;
 }
 
+/* the border belongs on the product image, not the whole card */
 .device picture img {
   width: 100%;
   height: auto;
+  border: 1px solid var(--tn-border-color);
+  border-radius: var(--tn-radius-sm);
 }
 
 .device p {
