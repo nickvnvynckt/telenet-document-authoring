@@ -6,6 +6,10 @@
   padding-block: 56px;
   overflow: hidden;
 
+  /* white surface so the angled bottom edge reads full-width against the
+     off-white page background (the yellow artwork only covers the left) */
+  background-color: var(--tn-white);
+
   /* angled bottom edge (lower on the left, rising to the right) */
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), 0 100%);
 }
