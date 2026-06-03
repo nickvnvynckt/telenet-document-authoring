@@ -71,6 +71,24 @@
   border-radius: var(--tn-radius) var(--tn-radius) 0 0;
 }
 
+/* wide card (full-width, leading icon + title inline) */
+.card.wide .card-figure {
+  display: flex;
+  align-items: center;
+  gap: var(--tn-space-s);
+  margin: 0 0 12px;
+  font-family: var(--tn-font-heading);
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.card.wide .card-figure img {
+  flex: none;
+  width: 48px;
+  height: auto;
+  border-radius: 0;
+}
+
 /* horizontal "are you a customer?" card */
 .card-row > div {
   display: flex;
