@@ -6,13 +6,13 @@
   padding-block: 56px;
   overflow: hidden;
 
-  /* white surface so the angled bottom edge reads full-width against the
+  /* white surface so the curved bottom edge reads full-width against the
      off-white page background (the yellow artwork only covers the left) */
   background-color: var(--tn-white);
 
-  /* angled bottom edge: both viewport edges at the same height, dipping in the
-     middle so the banner doesn't look tilted */
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 28px), 50% 100%, 0 calc(100% - 28px));
+  /* curved bottom edge, like Telenet's divider-curve: level at both edges,
+     gently bulging down in the middle. The SVG is stretched to the banner. */
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0 0H100V96Q50 104 0 96Z' fill='%23000'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
 }
 
 /* the authored image is a full-bleed background spanning the viewport width */
