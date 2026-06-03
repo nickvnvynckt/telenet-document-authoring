@@ -28,12 +28,15 @@
   content: none;
 }
 
-/* and are centered, full width within the card padding */
+/* and are centered, full width within the card padding; min-height matches the
+   chevron buttons so all card CTAs are the same height */
 .card:not(.wide) .button {
   box-sizing: border-box;
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
+  min-height: 52px;
   padding-inline: 24px;
 }
 
@@ -59,13 +62,24 @@
 
 /* link layout; the chevron marker comes from the shared .tn-chevron rule */
 .card-list li a {
-  display: flex;
-  align-items: center;
-  gap: var(--tn-space-s);
+  display: block;
   padding: 14px 0;
   font-family: var(--tn-font-heading);
   font-size: 20px;
   text-decoration: none;
+}
+
+/* render the chevron as an inline (atomic) marker so the hover underline
+   covers only the text, not the chevron */
+.card-list li a::before {
+  display: inline-grid;
+  margin-right: var(--tn-space-s);
+  vertical-align: middle;
+}
+
+.card-list li a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /* accent (yellow) card */
@@ -85,6 +99,10 @@
 }
 
 /* wide card (full-width): icon + title + body on the left, CTA on the right */
+.card.wide {
+  padding-inline: 48px;
+}
+
 .card.wide > div > div {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -105,7 +123,7 @@
 
 .card.wide .card-figure img {
   flex: none;
-  width: 48px;
+  width: 64px;
   height: auto;
   border-radius: 0;
 }
@@ -113,7 +131,7 @@
 /* body aligns under the title, to the right of the icon */
 .card.wide .card-figure + p {
   grid-column: 1;
-  margin: 0 0 0 calc(48px + var(--tn-space-s));
+  margin: 0 0 0 calc(64px + var(--tn-space-s));
 }
 
 .card.wide .button-wrapper {
