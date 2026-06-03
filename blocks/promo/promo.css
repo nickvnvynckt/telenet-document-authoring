@@ -6,6 +6,7 @@
   border-radius: var(--tn-radius);
   background-color: var(--tn-white);
   box-shadow: var(--tn-shadow);
+  text-align: left;
 }
 
 .promo > div > div {
@@ -16,8 +17,54 @@
   margin: 0 0 12px;
 }
 
+/* eyebrow / tag pill */
+.promo-tag {
+  display: inline-block;
+  align-self: flex-start;
+  margin: 0 0 16px;
+  padding: 6px 14px;
+  border-radius: var(--tn-radius-sm);
+  background-color: var(--tn-yellow);
+  color: var(--tn-black);
+  font-family: var(--tn-font-heading);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* title */
+.promo-title {
+  font-family: var(--tn-font-heading);
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+/* CTA rendered as an underlined link with a chevron (not a pill button) */
+.promo-cta {
+  margin: 4px 0 0;
+}
+
+.promo-cta a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  font-family: var(--tn-font-heading);
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.promo-cta a::after {
+  content: "›";
+  font-weight: 900;
+  text-decoration: none;
+}
+
+/* image pinned to the bottom edge, full-bleed */
 .promo .promo-media {
-  margin: -28px -28px 20px;
+  order: 99;
+  margin: auto -28px -28px;
 }
 
 .promo .promo-media img {
@@ -27,22 +74,24 @@
   object-fit: cover;
 }
 
-.promo h2,
-.promo h3 {
-  margin: 0 0 12px;
-}
-
-/* author-selectable themes (set the variant on the block in the document) */
+/* dark theme */
 .promo.dark > div > div {
   background-color: var(--tn-black);
   color: var(--tn-white);
 }
 
-.promo.dark .button {
-  border-color: var(--tn-white);
-  color: var(--tn-white);
+.promo.dark .promo-media img {
+  aspect-ratio: auto;
+  height: auto;
+  object-fit: contain;
 }
 
+/* accent theme */
 .promo.accent > div > div {
   background-color: var(--tn-yellow);
+}
+
+.promo.accent .promo-tag {
+  background-color: var(--tn-black);
+  color: var(--tn-white);
 }

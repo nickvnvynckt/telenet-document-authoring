@@ -272,9 +272,10 @@ main > .section[class~="4-columns"] {
   padding-inline: 24px;
 }
 
-main > .section[class~="2-columns"] { grid-template-columns: repeat(2, 1fr); }
-main > .section[class~="3-columns"] { grid-template-columns: repeat(3, 1fr); }
-main > .section[class~="4-columns"] { grid-template-columns: repeat(4, 1fr); }
+/* minmax(0, 1fr) keeps columns truly equal even when some cards contain images */
+main > .section[class~="2-columns"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+main > .section[class~="3-columns"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+main > .section[class~="4-columns"] { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
 /* inside a grid the wrappers fill their cell; intro/heading spans the full row */
 main > .section[class~="2-columns"] > div,
