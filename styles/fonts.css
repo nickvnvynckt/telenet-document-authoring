@@ -1,13 +1,6 @@
-/* Telenet brand fonts (self-hosted). Loaded post-LCP via aem.js loadFonts. */
-
-/* Body: Telenet Albra */
-@font-face {
-  font-family: "Telenet Albra";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/styles/fonts/Telenet-Albra-Regular.woff2") format("woff2");
-}
+/* Telenet brand fonts — non-critical weights, loaded post-LCP via aem.js
+ * loadFonts(). The critical weights (Albra 400, PP Right 400 + 700) are declared
+ * render-blocking in styles.css and preloaded in head.html. */
 
 @font-face {
   font-family: "Telenet Albra";
@@ -25,29 +18,12 @@
   src: url("/styles/fonts/Telenet-Albra-Bold.woff2") format("woff2");
 }
 
-/* Headings: PP Right Telenet (compact display) */
-@font-face {
-  font-family: "PP Right Telenet";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/styles/fonts/PPRightTelenet-CompactRegular.woff2") format("woff2");
-}
-
 @font-face {
   font-family: "PP Right Telenet";
   font-style: normal;
   font-weight: 500;
   font-display: swap;
   src: url("/styles/fonts/PPRightTelenet-CompactMedium.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "PP Right Telenet";
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("/styles/fonts/PPRightTelenet-CompactBold.woff2") format("woff2");
 }
 
 @font-face {

@@ -3,6 +3,33 @@
  * Derived from the look & feel of www2.telenet.be/residential/nl.
  */
 
+/* Critical brand fonts — declared render-blocking (and preloaded in head.html)
+ * so the LCP heading paints with the real face. The remaining weights load
+ * lazily via fonts.css. */
+@font-face {
+  font-family: "Telenet Albra";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/styles/fonts/Telenet-Albra-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "PP Right Telenet";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/styles/fonts/PPRightTelenet-CompactRegular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "PP Right Telenet";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/styles/fonts/PPRightTelenet-CompactBold.woff2") format("woff2");
+}
+
 :root {
   color-scheme: light;
 
@@ -19,10 +46,21 @@
   --tn-font-body: "Telenet Albra", system-ui, -apple-system, sans-serif;
   --tn-font-heading: "PP Right Telenet", "Telenet Albra", system-ui, sans-serif;
 
-  /* layout */
+  /* spacing scale */
+  --tn-space-xs: 8px;
+  --tn-space-s: 12px;
+  --tn-space-m: 24px;
+  --tn-space-l: 32px;
+
+  /* layout & shape */
   --tn-content-width: 1200px;
   --tn-radius: 20px;
+  --tn-radius-pill: 999px;
+  --tn-radius-sm: 8px;
   --tn-shadow: 0 8px 24px rgb(0 0 0 / 8%);
+  --tn-border-color: rgb(0 0 0 / 10%);
+  --tn-chevron-size: 28px;
+  --tn-transition: 0.15s ease;
 }
 
 body {
@@ -69,15 +107,18 @@ img {
   height: auto;
 }
 
-/* chevron buttons (black pill primary, outline secondary) */
+/* ---------- chevron buttons & CTA links ---------- */
+
+/* base shape (filled). Also covers a standalone "see all" link in default content. */
 .button,
-a.button {
+a.button,
+.default-content-wrapper p:has(> a:only-child) > a {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--tn-space-s);
   padding: 12px 24px 12px 12px;
   border: 2px solid var(--tn-black);
-  border-radius: 999px;
+  border-radius: var(--tn-radius-pill);
   background-color: var(--tn-black);
   color: var(--tn-white);
   font-family: var(--tn-font-heading);
@@ -86,31 +127,80 @@ a.button {
   line-height: 1;
   text-decoration: none;
   cursor: pointer;
+  transition:
+    transform var(--tn-transition),
+    background-color var(--tn-transition),
+    color var(--tn-transition);
 }
 
-.button::before {
+/* shared yellow chevron square (buttons, see-all links, .tn-chevron utility) */
+.button::before,
+.default-content-wrapper p:has(> a:only-child) > a::before,
+.tn-chevron::before {
   content: "›";
   display: grid;
   place-items: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
+  flex: none;
+  width: var(--tn-chevron-size);
+  height: var(--tn-chevron-size);
+  border-radius: var(--tn-radius-sm);
   background-color: var(--tn-yellow);
   color: var(--tn-black);
+  font-family: var(--tn-font-heading);
   font-size: 22px;
   font-weight: 900;
+  line-height: 1;
 }
 
-.button.secondary {
+/* outline (secondary) variant + the standalone see-all link */
+.button.secondary,
+.default-content-wrapper p:has(> a:only-child) > a {
   background-color: transparent;
   color: var(--tn-black);
+}
+
+.button:hover,
+.default-content-wrapper p:has(> a:only-child) > a:hover {
+  transform: translateY(-2px);
+}
+
+.button.secondary:hover,
+.default-content-wrapper p:has(> a:only-child) > a:hover {
+  background-color: var(--tn-black);
+  color: var(--tn-white);
+}
+
+.button:active,
+.default-content-wrapper p:has(> a:only-child) > a:active {
+  transform: none;
+}
+
+/* visible keyboard focus */
+a:focus-visible,
+.button:focus-visible {
+  outline: 3px solid var(--tn-black);
+  outline-offset: 3px;
+  border-radius: var(--tn-radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  a.button,
+  .default-content-wrapper p:has(> a:only-child) > a {
+    transition: none;
+  }
+
+  .button:hover,
+  .default-content-wrapper p:has(> a:only-child) > a:hover {
+    transform: none;
+  }
 }
 
 .button-wrapper {
   margin: 0;
 }
 
-/* sections */
+/* ---------- sections ---------- */
 main > .section {
   padding-block: clamp(28px, 5vw, 56px);
 }
@@ -142,7 +232,7 @@ main > .section > div:has(> .banner) {
 
 /* eyebrow / kicker: a short paragraph sitting directly above a heading */
 .default-content-wrapper p:has(+ h1, + h2, + h3, + h4) {
-  margin-bottom: 8px;
+  margin-bottom: var(--tn-space-xs);
   font-family: var(--tn-font-heading);
   font-size: 14px;
   font-weight: 700;
@@ -150,49 +240,72 @@ main > .section > div:has(> .banner) {
   text-transform: uppercase;
 }
 
-/* a "see all" link standing alone in default content renders as a centered
-   outline chevron button */
+/* a "see all" link standing alone in default content is centered */
 .default-content-wrapper p:has(> a:only-child) {
   text-align: center;
 }
 
-.default-content-wrapper p:has(> a:only-child) > a {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 24px 12px 12px;
-  border: 2px solid var(--tn-black);
-  border-radius: 999px;
-  background-color: transparent;
-  color: var(--tn-black);
-  font-family: var(--tn-font-heading);
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1;
-  text-decoration: none;
-}
-
-.default-content-wrapper p:has(> a:only-child) > a::before {
-  content: "›";
-  display: grid;
-  place-items: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  background-color: var(--tn-yellow);
-  color: var(--tn-black);
-  font-size: 22px;
-  font-weight: 900;
-}
-
-/* section styles, applied via a "Section Metadata" block (e.g. Style: highlight).
-   Other Section Metadata keys are exposed as data-* attributes on the section. */
+/* ---------- section styles (via a "Section Metadata" block) ----------
+   Style: highlight | centered | grid-2 | grid-3 | grid-4
+   Other keys are exposed as data-* attributes on the section. */
 main > .section.highlight {
   background-color: var(--tn-shaded);
 }
 
 main > .section.centered {
   text-align: center;
+}
+
+/* multi-up grids: lay a section's block wrappers side by side */
+main > .section.grid-2,
+main > .section.grid-3,
+main > .section.grid-4 {
+  display: grid;
+  gap: var(--tn-space-l);
+  align-items: start;
+  max-width: var(--tn-content-width);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+main > .section.grid-2 { grid-template-columns: repeat(2, 1fr); }
+main > .section.grid-3 { grid-template-columns: repeat(3, 1fr); }
+main > .section.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* inside a grid the wrappers fill their cell; intro/heading spans the full row */
+main > .section.grid-2 > div,
+main > .section.grid-3 > div,
+main > .section.grid-4 > div {
+  max-width: none;
+  padding-inline: 0;
+}
+
+main > .section.grid-2 > .default-content-wrapper,
+main > .section.grid-3 > .default-content-wrapper,
+main > .section.grid-4 > .default-content-wrapper {
+  grid-column: 1 / -1;
+}
+
+main > .section.grid-2 :is(.card, .promo, .device),
+main > .section.grid-3 :is(.card, .promo, .device),
+main > .section.grid-4 :is(.card, .promo, .device) {
+  max-width: none;
+  margin: 0;
+}
+
+@media (width <= 900px) {
+  main > .section.grid-3,
+  main > .section.grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width <= 600px) {
+  main > .section.grid-2,
+  main > .section.grid-3,
+  main > .section.grid-4 {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* prevent flash of unstyled content until decoration completes */

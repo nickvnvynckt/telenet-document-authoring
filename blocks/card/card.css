@@ -30,10 +30,6 @@
 }
 
 /* link-list card ("Wat zoek je?") */
-.card-list > div > div > p:first-child strong {
-  font-size: 22px;
-}
-
 .card-list ul {
   margin: 16px 0 0;
   padding: 0;
@@ -42,31 +38,18 @@
 
 .card-list li {
   margin: 0;
-  border-top: 1px solid rgb(0 0 0 / 8%);
+  border-top: 1px solid var(--tn-border-color);
 }
 
+/* link layout; the chevron marker comes from the shared .tn-chevron rule */
 .card-list li a {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--tn-space-s);
   padding: 14px 0;
   font-family: var(--tn-font-heading);
   font-size: 20px;
   text-decoration: none;
-}
-
-.card-list li a::before {
-  content: "›";
-  display: grid;
-  place-items: center;
-  flex: none;
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  background-color: var(--tn-yellow);
-  color: var(--tn-black);
-  font-size: 22px;
-  font-weight: 900;
 }
 
 /* accent (yellow) card */
@@ -76,11 +59,11 @@
 }
 
 /* media card with a leading image */
-.card-media > div > div > p:first-child {
+.card-media .card-figure {
   margin: -32px -32px 20px;
 }
 
-.card-media > div > div > p:first-child img {
+.card-media .card-figure img {
   width: 100%;
   border-radius: var(--tn-radius) var(--tn-radius) 0 0;
 }
@@ -91,7 +74,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: var(--tn-space-m);
 }
 
 .card-row p {

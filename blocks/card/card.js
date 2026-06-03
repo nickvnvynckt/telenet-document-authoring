@@ -10,12 +10,15 @@ export default function decorate(block) {
     block.classList.add('card-row');
   } else if (list) {
     block.classList.add('card-list');
+    // reuse the shared chevron marker on each list link
+    block.querySelectorAll('li a').forEach((a) => a.classList.add('tn-chevron'));
   } else if (pic && heading && heading.contains(pic)) {
     // icon sits inside the heading -> accent (yellow) card
     block.classList.add('card-highlight');
   } else if (pic) {
     // standalone leading image -> media card
     block.classList.add('card-media');
+    pic.closest('p')?.classList.add('card-figure');
   }
 
   // Buttonize call-to-action links (a link that is the sole content of its
