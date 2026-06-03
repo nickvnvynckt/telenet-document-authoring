@@ -277,11 +277,14 @@ main > .section[class~="2-columns"] { grid-template-columns: repeat(2, minmax(0,
 main > .section[class~="3-columns"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 main > .section[class~="4-columns"] { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
-/* inside a grid the wrappers fill their cell; intro/heading spans the full row */
+/* inside a grid the wrappers fill their cell; intro/heading spans the full row.
+   margin-inline must reset to 0 — the base "margin-inline: auto" on section
+   wrappers otherwise shrink-wraps grid items to their content width. */
 main > .section[class~="2-columns"] > div,
 main > .section[class~="3-columns"] > div,
 main > .section[class~="4-columns"] > div {
   max-width: none;
+  margin-inline: 0;
   padding-inline: 0;
 }
 
