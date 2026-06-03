@@ -1,0 +1,52 @@
+.banner {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 32px;
+  max-width: var(--tn-content-width);
+  margin-inline: auto;
+  padding: 56px 24px;
+  overflow: hidden;
+}
+
+/* lemon-yellow organic blob behind the content */
+.banner::before {
+  content: "";
+  position: absolute;
+  inset: 0 35% 0 -20%;
+  z-index: 0;
+  background-color: var(--tn-lemon);
+  border-radius: 0 45% 45% 0 / 0 60% 60% 0;
+}
+
+.banner > div {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 300px;
+}
+
+.banner-content {
+  order: 1;
+}
+
+.banner-media {
+  order: 2;
+  text-align: center;
+}
+
+.banner-content h1 {
+  margin: 0 0 28px;
+  font-size: clamp(40px, 7vw, 76px);
+  line-height: 1;
+}
+
+.banner-content .button-wrapper {
+  margin: 0;
+}
+
+@media (width >= 900px) {
+  .banner {
+    padding: 72px 24px;
+  }
+}

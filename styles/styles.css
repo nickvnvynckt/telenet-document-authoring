@@ -1,41 +1,130 @@
 /*
- * Whitelabel base styles.
- *
- * All branding has been intentionally removed: fonts, color palette, design
- * tokens, typography scale, buttons, grid and spacing. Only the structural
- * rules required for AEM Edge Delivery sections/blocks to decorate and render
- * without a flash of unstyled content remain. Add project styling on top.
+ * Telenet residential — base styles & design tokens.
+ * Derived from the look & feel of www2.telenet.be/residential/nl.
  */
 
 :root {
-  color-scheme: light dark;
-}
-
-.light-scheme {
   color-scheme: light;
-}
 
-.dark-scheme {
-  color-scheme: dark;
+  /* brand colors */
+  --tn-lemon: #faeb50;          /* bright hero/promo yellow */
+  --tn-yellow: #ffc421;         /* golden card/button/chevron yellow */
+  --tn-black: #000;
+  --tn-white: #fff;
+  --tn-bg: #fafaf8;             /* warm off-white page background */
+  --tn-shaded: #f0f0ee;         /* gray band background */
+  --tn-text: #000;
+
+  /* fonts */
+  --tn-font-body: "Telenet Albra", system-ui, -apple-system, sans-serif;
+  --tn-font-heading: "PP Right Telenet", "Telenet Albra", system-ui, sans-serif;
+
+  /* layout */
+  --tn-content-width: 1200px;
+  --tn-radius: 20px;
+  --tn-shadow: 0 8px 24px rgb(0 0 0 / 8%);
 }
 
 body {
   margin: 0;
+  display: none;
+  background-color: var(--tn-bg);
+  color: var(--tn-text);
+  font-family: var(--tn-font-body);
+  font-size: 18px;
+  line-height: 1.5;
 }
 
-/* Responsive images for EDS-optimized <picture> output. */
+body.appear {
+  display: block;
+}
+
+/* headings — compact display face, tight leading */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 0.5em;
+  font-family: var(--tn-font-heading);
+  font-weight: 400;
+  line-height: 1.02;
+}
+
+h1 { font-size: clamp(40px, 6vw, 76px); }
+h2 { font-size: clamp(32px, 4.5vw, 56px); }
+h3 { font-size: clamp(26px, 3vw, 36px); }
+h4 { font-size: 28px; }
+
+/* bold words inside headings/body use the heavier cut */
+strong { font-weight: 700; }
+
+a {
+  color: inherit;
+}
+
 img {
   max-width: 100%;
   height: auto;
 }
 
-/* Hide content until it has been decorated to avoid layout shift / FOUC. */
-main > div,
-.has-template,
-div[data-status] {
-  display: none;
+/* chevron buttons (black pill primary, outline secondary) */
+.button,
+a.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 24px 12px 12px;
+  border: 2px solid var(--tn-black);
+  border-radius: 999px;
+  background-color: var(--tn-black);
+  color: var(--tn-white);
+  font-family: var(--tn-font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.section {
-  display: block;
+.button::before {
+  content: "›";
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background-color: var(--tn-yellow);
+  color: var(--tn-black);
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.button.secondary {
+  background-color: transparent;
+  color: var(--tn-black);
+}
+
+.button-wrapper {
+  margin: 0;
+}
+
+/* sections */
+main > .section > div {
+  max-width: var(--tn-content-width);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+/* full-bleed blocks manage their own width */
+main > .section > div:has(> .banner) {
+  max-width: none;
+  padding-inline: 0;
+}
+
+/* prevent flash of unstyled content until decoration completes */
+main .section[data-section-status="loading"],
+main .section[data-section-status="initialized"] {
+  display: none;
 }
