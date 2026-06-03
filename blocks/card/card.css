@@ -1,0 +1,107 @@
+.card {
+  box-sizing: border-box;
+  margin-block: 16px;
+  padding: 32px;
+  border-radius: var(--tn-radius);
+  background-color: var(--tn-white);
+  box-shadow: var(--tn-shadow);
+}
+
+.card h3 {
+  margin: 0 0 12px;
+  font-size: 28px;
+}
+
+.card p {
+  margin: 0 0 16px;
+}
+
+.card .button-wrapper {
+  margin: 8px 0 0;
+}
+
+/* leading icon inside a heading */
+.card h3 picture,
+.card h3 img {
+  display: block;
+  width: 40px;
+  height: auto;
+  margin-bottom: 12px;
+}
+
+/* link-list card ("Wat zoek je?") */
+.card-list > div > div > p:first-child strong {
+  font-size: 22px;
+}
+
+.card-list ul {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card-list li {
+  margin: 0;
+  border-top: 1px solid rgb(0 0 0 / 8%);
+}
+
+.card-list li a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  font-family: var(--tn-font-heading);
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.card-list li a::before {
+  content: "›";
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background-color: var(--tn-yellow);
+  color: var(--tn-black);
+  font-size: 22px;
+  font-weight: 900;
+}
+
+/* accent (yellow) card */
+.card-highlight {
+  background-color: var(--tn-yellow);
+  box-shadow: none;
+}
+
+/* media card with a leading image */
+.card-media > div > div > p:first-child {
+  margin: -32px -32px 20px;
+}
+
+.card-media > div > div > p:first-child img {
+  width: 100%;
+  border-radius: var(--tn-radius) var(--tn-radius) 0 0;
+}
+
+/* horizontal "are you a customer?" card */
+.card-row > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.card-row p {
+  margin: 0 0 4px;
+}
+
+.card-row picture,
+.card-row img {
+  width: 44px;
+  height: auto;
+  vertical-align: middle;
+  margin-right: 12px;
+}
