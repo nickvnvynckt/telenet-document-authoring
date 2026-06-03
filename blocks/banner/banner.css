@@ -5,6 +5,9 @@
   min-height: 360px;
   padding-block: 56px;
   overflow: hidden;
+
+  /* angled bottom edge (lower on the left, rising to the right) */
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), 0 100%);
 }
 
 /* the authored image is a full-bleed background spanning the viewport width */
