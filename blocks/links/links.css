@@ -1,0 +1,25 @@
+.links > div > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 48px;
+}
+
+.links-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  text-align: center;
+}
+
+.links-item picture img {
+  width: 40px;
+  height: auto;
+}
+
+.links-item a {
+  font-family: var(--tn-font-heading);
+  font-size: 20px;
+}

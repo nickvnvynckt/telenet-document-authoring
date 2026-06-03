@@ -1,0 +1,48 @@
+.promo {
+  box-sizing: border-box;
+  overflow: hidden;
+  max-width: 580px;
+  margin: 24px auto;
+  border-radius: var(--tn-radius);
+  background-color: var(--tn-white);
+  box-shadow: var(--tn-shadow);
+}
+
+.promo > div > div {
+  padding: 28px;
+}
+
+.promo p {
+  margin: 0 0 12px;
+}
+
+.promo .promo-media {
+  margin: -28px -28px 20px;
+}
+
+.promo .promo-media img {
+  display: block;
+  width: 100%;
+  max-height: 320px;
+  object-fit: cover;
+}
+
+.promo h2,
+.promo h3 {
+  margin: 0 0 12px;
+}
+
+/* author-selectable themes (set the variant on the block in the document) */
+.promo.dark > div > div {
+  background-color: var(--tn-black);
+  color: var(--tn-white);
+}
+
+.promo.dark .button {
+  border-color: var(--tn-white);
+  color: var(--tn-white);
+}
+
+.promo.accent > div > div {
+  background-color: var(--tn-yellow);
+}

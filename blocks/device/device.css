@@ -1,0 +1,46 @@
+.device {
+  box-sizing: border-box;
+  max-width: 280px;
+  margin: 16px auto;
+  padding: 20px;
+  border: 1px solid rgb(0 0 0 / 10%);
+  border-radius: var(--tn-radius);
+  background-color: var(--tn-white);
+  text-align: center;
+}
+
+.device picture img {
+  width: 100%;
+  height: auto;
+}
+
+.device p {
+  margin: 0 0 8px;
+}
+
+.device-name {
+  font-family: var(--tn-font-heading);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.device-name a {
+  text-decoration: none;
+}
+
+.device-price {
+  margin-top: 12px;
+  font-family: var(--tn-font-heading);
+}
+
+.device-price strong {
+  font-size: 26px;
+}
+
+.device-old {
+  display: block;
+  color: rgb(0 0 0 / 50%);
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: line-through;
+}
