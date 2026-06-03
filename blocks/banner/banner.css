@@ -10,8 +10,9 @@
      off-white page background (the yellow artwork only covers the left) */
   background-color: var(--tn-white);
 
-  /* angled bottom edge (lower on the left, rising to the right) */
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), 0 100%);
+  /* angled bottom edge: both viewport edges at the same height, dipping in the
+     middle so the banner doesn't look tilted */
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 28px), 50% 100%, 0 calc(100% - 28px));
 }
 
 /* the authored image is a full-bleed background spanning the viewport width */
