@@ -71,12 +71,20 @@
   border-radius: var(--tn-radius) var(--tn-radius) 0 0;
 }
 
-/* wide card (full-width, leading icon + title inline) */
+/* wide card (full-width): icon + title + body on the left, CTA on the right */
+.card.wide > div > div {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: var(--tn-space-l);
+  align-items: center;
+}
+
 .card.wide .card-figure {
   display: flex;
   align-items: center;
   gap: var(--tn-space-s);
-  margin: 0 0 12px;
+  grid-column: 1;
+  margin: 0 0 8px;
   font-family: var(--tn-font-heading);
   font-size: 28px;
   font-weight: 700;
@@ -87,6 +95,30 @@
   width: 48px;
   height: auto;
   border-radius: 0;
+}
+
+.card.wide .card-figure + p {
+  grid-column: 1;
+  margin: 0;
+}
+
+.card.wide .button-wrapper {
+  grid-column: 2;
+  grid-row: 1 / -1;
+  align-self: center;
+  margin: 0;
+}
+
+@media (width <= 600px) {
+  .card.wide > div > div {
+    grid-template-columns: 1fr;
+  }
+
+  .card.wide .button-wrapper {
+    grid-column: 1;
+    grid-row: auto;
+    margin-top: 16px;
+  }
 }
 
 /* horizontal "are you a customer?" card */

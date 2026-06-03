@@ -266,7 +266,7 @@ main > .section[class~="3-columns"],
 main > .section[class~="4-columns"] {
   display: grid;
   gap: var(--tn-space-l);
-  align-items: start;
+  align-items: stretch;
   max-width: var(--tn-content-width);
   margin-inline: auto;
   padding-inline: 24px;
@@ -295,6 +295,43 @@ main > .section[class~="3-columns"] :is(.card, .promo, .device),
 main > .section[class~="4-columns"] :is(.card, .promo, .device) {
   max-width: none;
   margin: 0;
+}
+
+/* equal-height card/promo in a grid: stretch the inner wrappers and pin the
+   CTA to the bottom so the buttons line up across the row */
+main > .section[class~="2-columns"] :is(.card, .promo),
+main > .section[class~="3-columns"] :is(.card, .promo),
+main > .section[class~="4-columns"] :is(.card, .promo),
+main > .section[class~="2-columns"] :is(.card, .promo) > div,
+main > .section[class~="3-columns"] :is(.card, .promo) > div,
+main > .section[class~="4-columns"] :is(.card, .promo) > div,
+main > .section[class~="2-columns"] :is(.card, .promo) > div > div,
+main > .section[class~="3-columns"] :is(.card, .promo) > div > div,
+main > .section[class~="4-columns"] :is(.card, .promo) > div > div {
+  display: flex;
+  flex-direction: column;
+}
+
+/* fill the stretched grid wrapper so all cards in a row are equal height */
+main > .section[class~="2-columns"] :is(.card, .promo),
+main > .section[class~="3-columns"] :is(.card, .promo),
+main > .section[class~="4-columns"] :is(.card, .promo) {
+  height: 100%;
+}
+
+main > .section[class~="2-columns"] :is(.card, .promo) > div,
+main > .section[class~="3-columns"] :is(.card, .promo) > div,
+main > .section[class~="4-columns"] :is(.card, .promo) > div,
+main > .section[class~="2-columns"] :is(.card, .promo) > div > div,
+main > .section[class~="3-columns"] :is(.card, .promo) > div > div,
+main > .section[class~="4-columns"] :is(.card, .promo) > div > div {
+  flex: 1;
+}
+
+main > .section[class~="2-columns"] :is(.card, .promo) .button-wrapper,
+main > .section[class~="3-columns"] :is(.card, .promo) .button-wrapper,
+main > .section[class~="4-columns"] :is(.card, .promo) .button-wrapper {
+  margin-top: auto;
 }
 
 @media (width <= 900px) {
