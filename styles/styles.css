@@ -258,6 +258,19 @@ main > .section.centered {
   text-align: center;
 }
 
+/* a darker/shaded full-width band, optionally with curved top & bottom edges */
+main > .section.dark {
+  background-color: var(--tn-shaded);
+}
+
+main > .section.full-width {
+  padding-block: clamp(48px, 7vw, 96px);
+}
+
+main > .section.angles {
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0 5Q50 0 100 5V95Q50 100 0 95Z' fill='%23000'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+
 /* multi-up grids: lay a section's block wrappers side by side.
    Authored as Style: "2 columns" / "3 columns" / "4 columns" -> classes that
    start with a digit, so they are matched with [class~="…"]. */

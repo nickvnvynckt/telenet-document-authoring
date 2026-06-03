@@ -12,7 +12,7 @@
 
 .card h3 {
   margin: 0 0 12px;
-  font-size: 28px;
+  font-size: 40px;
 }
 
 .card p {
@@ -21,6 +21,20 @@
 
 .card .button-wrapper {
   margin: 8px 0 0;
+}
+
+/* card CTAs have no chevron marker (except the full-width "wide" card) */
+.card:not(.wide) .button::before {
+  content: none;
+}
+
+/* and are centered, full width within the card padding */
+.card:not(.wide) .button {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-inline: 24px;
 }
 
 /* leading icon inside a heading */
@@ -41,7 +55,6 @@
 
 .card-list li {
   margin: 0;
-  border-top: 1px solid var(--tn-border-color);
 }
 
 /* link layout; the chevron marker comes from the shared .tn-chevron rule */
@@ -61,14 +74,14 @@
   box-shadow: none;
 }
 
-/* media card with a leading image */
+/* media card: image inset to match the text padding */
 .card-media .card-figure {
-  margin: -32px -32px 20px;
+  margin: 0 0 20px;
 }
 
 .card-media .card-figure img {
   width: 100%;
-  border-radius: var(--tn-radius) var(--tn-radius) 0 0;
+  border-radius: var(--tn-radius);
 }
 
 /* wide card (full-width): icon + title + body on the left, CTA on the right */
@@ -97,9 +110,10 @@
   border-radius: 0;
 }
 
+/* body aligns under the title, to the right of the icon */
 .card.wide .card-figure + p {
   grid-column: 1;
-  margin: 0;
+  margin: 0 0 0 calc(48px + var(--tn-space-s));
 }
 
 .card.wide .button-wrapper {
@@ -107,6 +121,10 @@
   grid-row: 1 / -1;
   align-self: center;
   margin: 0;
+}
+
+.card.wide .button {
+  padding: 12px 28px;
 }
 
 @media (width <= 600px) {

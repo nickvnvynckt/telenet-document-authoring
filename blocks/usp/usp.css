@@ -2,10 +2,10 @@
   display: grid;
   gap: 32px;
   align-items: center;
-  margin: 32px auto;
-  padding: 48px 32px;
-  border-radius: 48px;
-  background-color: var(--tn-shaded);
+
+  /* left-aligned even inside a centered section; the band/curve come from the
+     section (Section Metadata: dark / full-width / angles) */
+  text-align: left;
 }
 
 .usp-media img {
@@ -48,6 +48,5 @@
 @media (width >= 900px) {
   .usp {
     grid-template-columns: 1fr 1.2fr;
-    padding: 64px;
   }
 }
