@@ -1,9 +1,9 @@
-name = "ak-website"
+name = "Telenet"
 main = "index.js"
 compatibility_date = "2025-02-14"
 keep_vars = true
 
-vars = { AEM_ORG = "aemsites", AEM_SITE = "author-kit" }
+vars = { AEM_ORG = "bdhoine", AEM_SITE = "telenet-document-authoring" }
 
 [env.dev]
-vars = { AEM_ORG = "aemsites", AEM_SITE = "author-kit" }
+vars = { AEM_ORG = "bdhoine", AEM_SITE = "telenet-document-authoring" }
